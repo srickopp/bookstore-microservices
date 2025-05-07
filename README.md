@@ -1,5 +1,4 @@
 # Bookstore Microservices Project
-
 This is a **monorepo** setup for a **Bookstore** application built with **NestJS**, leveraging **microservices architecture**. The project consists of three primary services:
 
 1. **User Service**: Manages user data and authentication.
