@@ -1,5 +1,3 @@
-Here’s a sample **README.md** for your project that includes instructions for setting up, running, and understanding your monorepo project:
-
 # Bookstore Microservices Project
 
 This is a **monorepo** setup for a **Bookstore** application built with **NestJS**, leveraging **microservices architecture**. The project consists of three primary services:
