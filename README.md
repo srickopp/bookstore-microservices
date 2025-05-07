@@ -78,19 +78,18 @@ http://localhost:3000/api
 
 ### User Service API
 
-* `POST /create-user`: Create a new user.
+* `POST /users`: Create a new user.
 * `GET /users`: Get all users.
-* `GET /user/:email`: Get a user by email.
+* `GET /users/:id`: Get a user by id.
 
 ### Book Service API
 
-* `POST /create-book`: Create a new book.
+* `POST /books`: Create a new book.
 * `GET /books`: Get all books.
-* `GET /book/:title`: Get a book by title.
 
 ### Order Service API
 
-* `POST /create-order`: Create a new order.
+* `POST /orderr`: Create a new order.
 * `GET /orders`: Get all orders.
 
 ## Folder Structure

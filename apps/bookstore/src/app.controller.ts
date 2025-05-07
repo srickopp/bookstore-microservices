@@ -20,7 +20,7 @@ export class AppController {
     return this.appService.listUser();
   }
 
-  @Get('user/:id')
+  @Get('users/:id')
   async getUserById(@Param('id') id: string) {
     return this.appService.getUserById(id);
   }
