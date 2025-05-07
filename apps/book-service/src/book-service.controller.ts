@@ -12,12 +12,12 @@ export class BookServiceController {
     return this.bookService.create(createBookDto);
   }
 
-  @MessagePattern({ cmd: 'get-all-books' })
+  @MessagePattern({ cmd: 'get-books' })
   async getAllBooks() {
     return this.bookService.findAll();
   }
 
-  @MessagePattern({ cmd: 'get-book-by-title' })
+  @MessagePattern({ cmd: 'get-books-by-title' })
   async getBookByTitle(title: string) {
     return this.bookService.findOneByTitle(title);
   }

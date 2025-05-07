@@ -12,7 +12,7 @@ export class OrderServiceController {
     return this.orderService.create(createOrderDto);
   }
 
-  @MessagePattern({ cmd: 'get-all-orders' })
+  @MessagePattern({ cmd: 'get-orders' })
   async getAllOrders() {
     return this.orderService.findAll();
   }

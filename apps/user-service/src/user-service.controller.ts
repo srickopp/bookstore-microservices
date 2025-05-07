@@ -7,7 +7,7 @@ import { CreateUserDto } from './dto/user.dto';
 export class UserServiceController {
   constructor(private readonly userService: UserService) {}
 
-  @MessagePattern({ cmd: 'get-all-users' })
+  @MessagePattern({ cmd: 'get-users' })
   async getAllUsers() {
     return this.userService.findAll();
   }

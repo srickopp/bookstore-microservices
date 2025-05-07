@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 
 import { Book, BookDocument } from './schema/book.schema';
-import { MessagePattern, RpcException } from '@nestjs/microservices';
+import { RpcException } from '@nestjs/microservices';
 import { CreateBookDto } from './dto/book.dto';
 
 @Injectable()

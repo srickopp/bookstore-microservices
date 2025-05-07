@@ -19,7 +19,12 @@ export class AppService {
     @Inject('ORDER_SERVICE') private orderServiceClient: ClientProxy,
   ) {}
 
-  // Function to create a user
+  /**
+   * This function creates a new user in the system.
+   *
+   * @param createUserDto
+   * @returns
+   */
   async createUser(createUserDto: CreateUserDto) {
     try {
       const result = this.userServiceClient.send(
@@ -32,6 +37,12 @@ export class AppService {
     }
   }
 
+  /**
+   * This function retrieves a user by their email address.
+   *
+   * @param email
+   * @returns
+   */
   async getUserByEmail(email: string) {
     try {
       const result = this.userServiceClient.send(
@@ -44,6 +55,12 @@ export class AppService {
     }
   }
 
+  /**
+   * This function retrieves a user by their ID.
+   *
+   * @param userId
+   * @returns
+   */
   async getUserById(userId: string) {
     try {
       const result = this.userServiceClient.send(
@@ -56,16 +73,26 @@ export class AppService {
     }
   }
 
+  /**
+   * This function retrieves all users in the system.
+   *
+   * @returns
+   */
   async listUser() {
     try {
-      const result = this.userServiceClient.send({ cmd: 'get-all-users' }, {});
+      const result = this.userServiceClient.send({ cmd: 'get-users' }, {});
       return await lastValueFrom(result);
     } catch (error) {
       this.handleError(error);
     }
   }
 
-  // Function to create a book
+  /**
+   * This function creates a new book in the system.
+   *
+   * @param createBookDto
+   * @returns
+   */
   async createBook(createBookDto: CreateBookDto) {
     try {
       const result = this.bookServiceClient.send(
@@ -78,22 +105,32 @@ export class AppService {
     }
   }
 
-  // Function to list books
+  /**
+   * This function retrieves a book by its title.
+   *
+   * @param title
+   * @returns
+   */
   async listBook() {
     try {
-      const result = this.bookServiceClient.send({ cmd: 'get-all-books' }, {});
+      const result = this.bookServiceClient.send({ cmd: 'get-books' }, {});
       return await lastValueFrom(result);
     } catch (error) {
       this.handleError(error);
     }
   }
 
-  // Function to list orders and fetch user and book data
+  /**
+   * This function retrieves a book by its ID.
+   *
+   * @param bookId
+   * @returns
+   */
   async listOrder() {
     try {
       // Fetch all orders
       const orders = await lastValueFrom(
-        this.orderServiceClient.send({ cmd: 'get-all-orders' }, {}),
+        this.orderServiceClient.send({ cmd: 'get-orders' }, {}),
       );
 
       // For each order, get associated user and book
@@ -106,7 +143,7 @@ export class AppService {
         );
         const book = await lastValueFrom(
           this.bookServiceClient.send(
-            { cmd: 'get-book-by-title' },
+            { cmd: 'get-books-by-title' },
             order.bookId,
           ),
         );
@@ -121,6 +158,12 @@ export class AppService {
     }
   }
 
+  /**
+   * This function retrieves a book by its ID.
+   *
+   * @param bookId
+   * @returns
+   */
   async createOrder(createOrderDto: CreateOrderDto) {
     try {
       // Validate user exists
@@ -165,6 +208,12 @@ export class AppService {
     }
   }
 
+  /**
+   * This function retrieves an order by its ID.
+   *
+   * @param orderId
+   * @returns
+   */
   async getOrderByUserId(userId: string) {
     try {
       // Fetch orders by userId
@@ -190,6 +239,12 @@ export class AppService {
     }
   }
 
+  /**
+   * This function retrieves an order by its ID.
+   *
+   * @param orderId
+   * @returns
+   */
   async getOrderById(orderId: string) {
     try {
       const result = this.orderServiceClient.send(
