@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/bookstore/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/bookstore/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/bookstore",
+  "projects": {
+    "book-service": {
+      "type": "application",
+      "root": "apps/book-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/book-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/book-service/tsconfig.app.json"
+      }
+    },
+    "bookstore": {
+      "type": "application",
+      "root": "apps/bookstore",
+      "entryFile": "main",
+      "sourceRoot": "apps/bookstore/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/bookstore/tsconfig.app.json"
+      }
+    },
+    "order-service": {
+      "type": "application",
+      "root": "apps/order-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/order-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/order-service/tsconfig.app.json"
+      }
+    },
+    "user-service": {
+      "type": "application",
+      "root": "apps/user-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/user-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user-service/tsconfig.app.json"
+      }
+    }
+  }
+}
