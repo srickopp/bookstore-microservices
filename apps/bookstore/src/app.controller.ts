@@ -40,4 +40,9 @@ export class AppController {
   async createOrder(@Body() createOrderDto: CreateOrderDto) {
     return await this.appService.createOrder(createOrderDto);
   }
+
+  @Get('orders/:userId')
+  async getOrdersByUser(@Param('userId') userId: string) {
+    return this.appService.getOrderByUserId(userId);
+  }
 }

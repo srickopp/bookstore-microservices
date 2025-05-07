@@ -165,6 +165,43 @@ export class AppService {
     }
   }
 
+  async getOrderByUserId(userId: string) {
+    try {
+      // Fetch orders by userId
+      const orders = await lastValueFrom(
+        this.orderServiceClient.send({ cmd: 'get-order-by-userId' }, userId),
+      );
+
+      for (let order of orders) {
+        const user = await lastValueFrom(
+          this.userServiceClient.send({ cmd: 'get-user-by-id' }, order.userId),
+        );
+        const book = await lastValueFrom(
+          this.bookServiceClient.send({ cmd: 'get-book-by-id' }, order.bookId),
+        );
+
+        order.user = user;
+        order.book = book;
+      }
+
+      return orders;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async getOrderById(orderId: string) {
+    try {
+      const result = this.orderServiceClient.send(
+        { cmd: 'get-order-by-id' },
+        orderId,
+      );
+      return await lastValueFrom(result);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
   // Error handling utility function
   private handleError(error: any) {
     if (error?.response?.data) {
