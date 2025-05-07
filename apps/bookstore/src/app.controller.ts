@@ -10,7 +10,7 @@ import { ApiTags } from '@nestjs/swagger';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('create-user')
+  @Post('users')
   async createUser(@Body() createUserDto: CreateUserDto) {
     return await this.appService.createUser(createUserDto);
   }
@@ -20,12 +20,12 @@ export class AppController {
     return this.appService.listUser();
   }
 
-  @Get('user/:email')
-  async getUserByEmail(@Param('email') email: string) {
-    return this.appService.getUserByEmail(email);
+  @Get('user/:id')
+  async getUserById(@Param('id') id: string) {
+    return this.appService.getUserById(id);
   }
 
-  @Post('create-book')
+  @Post('books')
   async createBook(@Body() createBookDto: CreateBookDto) {
     return await this.appService.createBook(createBookDto);
   }
@@ -35,7 +35,7 @@ export class AppController {
     return this.appService.listBook();
   }
 
-  @Post('create-order')
+  @Post('orders')
   async createOrder(@Body() createOrderDto: CreateOrderDto) {
     return await this.appService.createOrder(createOrderDto);
   }
