@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import { BookServiceModule } from './book-service.module';
+import { config } from 'dotenv';
+config();
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -8,8 +10,8 @@ async function bootstrap() {
     {
       transport: Transport.TCP,
       options: {
-        host: 'localhost',
-        port: 3002,
+        host: process.env.BOOK_SERVICE_HOST || 'localhost',
+        port: parseInt(process.env.BOOK_SERVICE_PORT) || 3002,
       },
     },
   );
