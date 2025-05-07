@@ -86,8 +86,8 @@ http://localhost:3000/api
 
 ### Order Service API
 
-* `POST /orderr`: Create a new order.
-* `GET /orders`: Get all orders.
+* `POST /orders`: Create a new order.
+* `GET /orders/:userId`: Get order by userId.
 
 ## Folder Structure
 The main components of the project are located in the following directories:
