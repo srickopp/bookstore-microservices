@@ -25,7 +25,6 @@ export class AppController {
     return this.appService.getUserByEmail(email);
   }
 
-  @ApiTags('Book')
   @Post('create-book')
   async createBook(@Body() createBookDto: CreateBookDto) {
     return await this.appService.createBook(createBookDto);
@@ -43,6 +42,6 @@ export class AppController {
 
   @Get('orders/:userId')
   async getOrdersByUser(@Param('userId') userId: string) {
-    return this.appService.getOrderByUserId(userId);
+    return await this.appService.getOrderByUserId(userId);
   }
 }

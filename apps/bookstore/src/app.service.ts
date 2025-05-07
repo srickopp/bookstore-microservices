@@ -169,7 +169,7 @@ export class AppService {
     try {
       // Fetch orders by userId
       const orders = await lastValueFrom(
-        this.orderServiceClient.send({ cmd: 'get-order-by-userId' }, userId),
+        this.orderServiceClient.send({ cmd: 'get-order-by-user' }, userId),
       );
 
       for (let order of orders) {
